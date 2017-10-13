@@ -21,7 +21,7 @@
     
     // load our data source and hand it over to APLMainTableViewController
     //
-    NSArray *products = @[[APLProduct productWithType:[APLProduct deviceTypeTitle]
+    self.products = @[[APLProduct productWithType:[APLProduct deviceTypeTitle]
                                                      name:@"iPhone"
                                                      year:@2007
                                                     price:@599.00],
@@ -59,17 +59,18 @@
                                                     price:@1499.00]
                               ];
     
-    UINavigationController *navigationController = (UINavigationController *)(self.window).rootViewController;
-    // note we want the first view controller (not the visibleViewController) in case
-    // we are being restored from UIStateRestoration
-    //
-    APLMainTableViewController *viewController = (APLMainTableViewController *)navigationController.viewControllers[0];
-    viewController.products = products;
+//    UINavigationController *navigationController = (UINavigationController *)(self.window).rootViewController;
+//    // note we want the first view controller (not the visibleViewController) in case
+//    // we are being restored from UIStateRestoration
+//    //
+//    APLMainTableViewController *viewController = (APLMainTableViewController *)navigationController.viewControllers[0];
+//    viewController.products = products;
     
     return YES;
 }
 
-
+/* turn off state restoration stuff
+ 
 #pragma mark - UIStateRestoration
 
 - (BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder {
@@ -79,5 +80,6 @@
 - (BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder {
     return YES;
 }
+*/
 
 @end

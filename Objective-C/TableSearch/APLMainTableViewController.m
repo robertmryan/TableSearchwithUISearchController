@@ -10,6 +10,7 @@
 #import "APLDetailViewController.h"
 #import "APLResultsTableController.h"
 #import "APLProduct.h"
+#import "APLAppDelegate.h"
 
 @interface APLMainTableViewController () <UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating>
 
@@ -31,6 +32,8 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    
+    self.products = [(APLAppDelegate *)[[UIApplication sharedApplication] delegate] products];
 
     _resultsTableController = [[APLResultsTableController alloc] init];
     _searchController = [[UISearchController alloc] initWithSearchResultsController:self.resultsTableController];
@@ -130,7 +133,8 @@
     APLDetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"APLDetailViewController"];
     detailViewController.product = selectedProduct; // hand off the current product to the detail view controller
     
-    [self.navigationController pushViewController:detailViewController animated:YES];
+//    [self.navigationController pushViewController:detailViewController animated:YES];
+    [self showViewController:detailViewController sender:self];
     
     // note: should not be necessary but current iOS 8.0 bug (seed 4) requires it
     [tableView deselectRowAtIndexPath:indexPath animated:NO];

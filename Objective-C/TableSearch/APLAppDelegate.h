@@ -8,6 +8,10 @@
 
 @import UIKit;
 
+@class APLProduct;
+
 @interface APLAppDelegate : NSObject <UIApplicationDelegate>
+
+@property (nonatomic, strong) NSArray<APLProduct *> *products;
 
 @end
